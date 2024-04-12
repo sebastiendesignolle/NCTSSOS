@@ -66,9 +66,11 @@ end
 
 function nctssos_first(supp::Vector{Vector{Vector{UInt16}}}, coe, n::Int64, order::Int64; numeq=0, reducebasis=false, TS="block",
     obj="eigen", merge=false, md=3, solve=true, solver="Mosek", Gram=false, QUIET=false, partition=0, constraint=nothing, cosmo_setting=cosmo_para())
-    println("********************************** NCTSSOS **********************************")
-    println("Version 0.2.0, developed by Jie Wang, 2020--2023")
-    println("NCTSSOS is launching...")
+    if QUIET == false
+        println("********************************** NCTSSOS **********************************")
+        println("Version 0.2.0, developed by Jie Wang, 2020--2023")
+        println("NCTSSOS is launching...")
+    end
     m = length(supp)-1
     dg = [maximum(length.(supp[i])) for i=2:m+1]
     if obj == "trace"
