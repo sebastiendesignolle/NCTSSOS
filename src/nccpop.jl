@@ -457,7 +457,9 @@ function ncblockcpop(m, supp, coe, basis, blocks, cl, blocksize; numeq=0, QUIET=
            status = primal_status(model)
            println("solution status: $status")
         end
-        println("optimum = $objv")
+        if QUIET == false
+            println("optimum = $objv")
+        end
         if Gram == true
             GramMat = Vector{Vector{Union{Float64,Matrix{Float64}}}}(undef, m+1)
             GramMat[1] = [value.(pos[i]) for i = 1:cl[1]]
